@@ -17,7 +17,7 @@
     <button type="button" onclick="checkAuthor()">Check the guess</button>
 </form>
 
-<p>Results: <span id="results">Good: 0, Oops: 0</span></p>
+<p id="result"> Right/Wrong?</p>
 
 <script>
     var good = 0;
@@ -26,17 +26,18 @@
     function checkAuthor() {
         var hiddenAuthor = document.getElementById("hiddenAuthor").value;
         var guessAuthor = document.getElementById("guessAuthor").value;
+        message = document.getElementById("result")
 
         if (hiddenAuthor === guessAuthor) {
             good++;
             alert("You got it right!");
+            message.innerHTML = `Correct Guess!  good: ${good}`;
         } else {
             oops++;
             alert("Sorry");
+            message.innerHTML = `Wrong Guess! oops: ${oops}`;
+            console.log("Sorry");
         }
-        
-        var resultsElement = document.getElementById("results");
-        resultsElement.textContent = "Good: " + good + ", Oops: " + oops;
     }
 </script>
 
